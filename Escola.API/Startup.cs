@@ -31,17 +31,24 @@ namespace Escola.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<EscolaDbContexto>();
             services.AddControllers();
 
+            //Services
             services.AddScoped<IAlunoService,AlunoService>();
+
+
+            //Repositorios
+            services.AddDbContext<EscolaDbContexto>();
             services.AddScoped<IAlunoRepository, AlunoRepository>();
             services.AddScoped<ITurmaRepository, TurmaRepository>();
+            services.AddScoped<IBoletimRepository, BoletimRepository>();
 
+
+            //Cache
             services.AddMemoryCache();
 
 
-
+            //swagger
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "Escola.API", Version = "v1" });
