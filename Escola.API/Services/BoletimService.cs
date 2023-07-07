@@ -18,7 +18,18 @@ namespace Escola.API.Services
         }
         public Boletim Atualizar(Boletim boletim)
         {
-            throw new System.NotImplementedException();
+            var boletimDb = _boletimRepository.ObterPorId(boletim.Id);
+
+            if (boletimDb == null)
+            {
+                throw new NotFoundException("Boletin não cadastrado");
+
+            }
+            boletimDb.Update(boletim);
+
+            _boletimRepository.Atualizar(boletimDb);
+            return boletimDb;
+            
         }
 
         public Boletim Cadastrar(Boletim boletim)
@@ -34,17 +45,25 @@ namespace Escola.API.Services
 
         public void Excluir(int id)
         {
-            throw new System.NotImplementedException();
+            var boletim = _boletimRepository.ObterPorId(id);
+
+            if (boletim == null)
+            {
+                throw new NotFoundException("Boletin não cadastrado");
+
+            }
+
+            _boletimRepository.Excluir(boletim);
         }
 
         public List<Boletim> ObterPorAluno(int alunoId)
         {
-            throw new System.NotImplementedException();
+            return ObterPorAluno(alunoId);
         }
 
         public Boletim ObterPorId(int id)
         {
-            throw new System.NotImplementedException();
+            return ObterPorId(id);
         }
     }
 }

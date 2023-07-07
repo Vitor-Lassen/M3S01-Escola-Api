@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading;
+using System.Xml.Serialization;
 
 namespace Escola.API.Model
 {
@@ -12,5 +13,11 @@ namespace Escola.API.Model
         public int AlunoId { get; set; }
 
         public List<NotasMateria> NotasMaterias { get; set; }
+
+        public void Update(Boletim boletim)
+        {
+
+            Data = boletim.Data;
+        }
     }
 }
