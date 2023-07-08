@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Escola.API.Interfaces.Services
 {
-    public interface IBoletimServices
+    public interface IBoletimService
     {
         public Boletim ObterPorId (int id);
         public List<Boletim> ObterPorAluno(int alunoId);

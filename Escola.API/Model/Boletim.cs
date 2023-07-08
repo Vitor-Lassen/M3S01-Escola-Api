@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Escola.API.DTO;
+using System;
 using System.Collections.Generic;
 using System.Threading;
 using System.Xml.Serialization;
@@ -18,6 +19,18 @@ namespace Escola.API.Model
         {
 
             Data = boletim.Data;
+        }
+
+        public Boletim()
+        {
+            
+        }
+        public Boletim(BoletimDTO boletim)
+        {
+
+            Id = boletim.Id;
+            Data = boletim.Data;
+            AlunoId = boletim.AlunoId;
         }
     }
 }

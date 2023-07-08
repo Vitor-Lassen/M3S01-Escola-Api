@@ -6,7 +6,7 @@ using System.Collections.Generic;
 
 namespace Escola.API.Services
 {
-    public class BoletimService : IBoletimServices
+    public class BoletimService : IBoletimService
     {
         private readonly IBoletimRepository _boletimRepository;
         private readonly IAlunoService _alunoService;
@@ -58,12 +58,12 @@ namespace Escola.API.Services
 
         public List<Boletim> ObterPorAluno(int alunoId)
         {
-            return ObterPorAluno(alunoId);
+            return _boletimRepository.ObterPorAlunoId(alunoId);
         }
 
         public Boletim ObterPorId(int id)
         {
-            return ObterPorId(id);
+            return _boletimRepository.ObterPorId(id);
         }
     }
 }
