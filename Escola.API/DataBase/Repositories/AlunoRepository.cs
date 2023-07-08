@@ -1,5 +1,6 @@
 ﻿using Escola.API.Interfaces.Repositories;
 using Escola.API.Model;
+using Microsoft.EntityFrameworkCore;
 using System.Linq;
 
 namespace Escola.API.DataBase.Repositories
@@ -13,7 +14,7 @@ namespace Escola.API.DataBase.Repositories
 
         public override Aluno ObterPorId(int id)
         {
-            return _context.Alunos.FirstOrDefault(x => id == x.Id);
+            return _context.Alunos.Include(x=>x.Boletins).FirstOrDefault(x => id == x.Id);
         }
 
         public bool EmailJaCadastrado(string email)
