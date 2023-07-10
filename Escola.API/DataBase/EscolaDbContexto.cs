@@ -88,6 +88,24 @@ namespace Escola.API.DataBase
                                         .IsUnique();
 
 
+            modelBuilder.Entity<AlunoTurma>().ToTable("ALUNO_X_TURMA");
+            modelBuilder.Entity<AlunoTurma>().Property(x => x.AlunoId)
+                             .HasColumnType("int")
+                             .HasColumnName("ALUNO_ID");
+
+            modelBuilder.Entity<AlunoTurma>().Property(x => x.TurmaId)
+                             .HasColumnType("int")
+                             .HasColumnName("TURMA_ID");
+
+
+            modelBuilder.Entity<Aluno>().HasMany(x => x.Turmas)
+                                        .WithMany(x => x.Alunos)
+                                        .UsingEntity<AlunoTurma>(
+                                                    l => l.HasOne(x => x.Turma).WithMany().HasForeignKey(x => x.TurmaId),
+                                                    r => r.HasOne(x => x.Aluno).WithMany().HasForeignKey(x => x.AlunoId)
+                                                    );
+
+
             modelBuilder.Entity<Boletim>().ToTable("BOLETIM");
 
 
