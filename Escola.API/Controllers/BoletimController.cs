@@ -110,7 +110,7 @@ namespace Escola.API.Controllers
             }
         }
 
-        [HttpGet("/boletins/{id}")]
+        [HttpGet("{id}")]
         public ActionResult GetPorId( int id)
         {
             try
@@ -130,7 +130,7 @@ namespace Escola.API.Controllers
             }
         }
 
-        [HttpDelete("boletins/{id}")]
+        [HttpDelete("{id}")]
         public ActionResult Delete( int id)
         {
             try

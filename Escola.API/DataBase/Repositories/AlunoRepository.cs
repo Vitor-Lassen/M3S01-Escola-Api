@@ -14,7 +14,7 @@ namespace Escola.API.DataBase.Repositories
 
         public override Aluno ObterPorId(int id)
         {
-            return _context.Alunos.Include(x=>x.Boletins).FirstOrDefault(x => id == x.Id);
+            return _context.Alunos.Include(x=>x.Boletins).Include(x=>x.Turmas).FirstOrDefault(x => id == x.Id);
         }
 
         public bool EmailJaCadastrado(string email)
