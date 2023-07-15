@@ -23,7 +23,7 @@ namespace Escola.API.Controllers
         }
 
         [HttpPost("/alunos/{idAluno}/boletins")]
-        [Authorize]
+        [Authorize(Roles = "Professor")]
         public ActionResult Post(BoletimDTO boletim, int idAluno)
         {
 
@@ -39,7 +39,7 @@ namespace Escola.API.Controllers
         }
 
         [HttpPut("/alunos/{idAluno}/boletins/{id}")]
-        [Authorize]
+        [Authorize(Roles = "Professor")]
         public ActionResult Put(BoletimDTO boletim, int idAluno, int id)
         {
 
@@ -54,7 +54,7 @@ namespace Escola.API.Controllers
 
 
         [HttpGet("/alunos/{idAluno}/boletins")]
-        [Authorize]
+        [Authorize(Roles = "Professor,Aluno")]
         public ActionResult GetPorAluno(int idAluno)
         {
 
@@ -65,7 +65,7 @@ namespace Escola.API.Controllers
         }
 
         [HttpGet("/alunos/{idAluno}/boletins/{id}")]
-        [Authorize]
+        [Authorize(Roles = "Professor,Aluno")]
         public ActionResult GetPorIdValidaAluno(int idAluno, int id)
         {
 
@@ -79,7 +79,7 @@ namespace Escola.API.Controllers
         }
 
         [HttpGet("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Professor,Aluno")]
         public ActionResult GetPorId(int id)
         {
 
@@ -91,7 +91,7 @@ namespace Escola.API.Controllers
         }
 
         [HttpDelete("{id}")]
-        [Authorize]
+        [Authorize(Roles = "Professor")]
         public ActionResult Delete(int id)
         {
 

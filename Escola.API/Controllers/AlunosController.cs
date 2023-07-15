@@ -26,7 +26,7 @@ namespace Escola.API.Controllers
         }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(Roles ="Professor")]
         public IActionResult Post([FromBody] AlunoDTO alunoDTO)
         {
             var aluno = new Aluno(alunoDTO);
@@ -37,7 +37,7 @@ namespace Escola.API.Controllers
         }
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = "Professor,Aluno")]
         public ActionResult<AlunoDTO> Get()
         {
 
@@ -49,7 +49,7 @@ namespace Escola.API.Controllers
 
 
         [HttpGet]
-        [Authorize]
+        [Authorize(Roles = "Professor,Aluno")]
         [Route("{id}")]
         public IActionResult GetComId([FromRoute] int id)
         {
@@ -65,7 +65,7 @@ namespace Escola.API.Controllers
 
 
         [HttpPut]
-        [Authorize]
+        [Authorize(Roles = "Professor")]
         [Route("{id}")]
         public IActionResult AtualizaAluno([FromBody] AlunoDTO alunoDTO, [FromRoute] int id)
         {
@@ -86,7 +86,7 @@ namespace Escola.API.Controllers
         }
 
         [HttpDelete]
-        [Authorize]
+        [Authorize(Roles = "Professor")]
         [Route("{id}")]
         public IActionResult Delete(int id)
         {
