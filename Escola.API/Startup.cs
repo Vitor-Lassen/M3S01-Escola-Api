@@ -1,3 +1,4 @@
+using Escola.API.Config;
 using Escola.API.DataBase;
 using Escola.API.DataBase.Repositories;
 using Escola.API.Interfaces.Repositories;
@@ -70,6 +71,8 @@ namespace Escola.API
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseMiddleware<ErrorMiddleware>();
 
             app.UseEndpoints(endpoints =>
             {
