@@ -39,6 +39,7 @@ namespace Escola.API.Config
                     status = 409;
                     break;
                 case ArgumentException _:
+                case LoginInvalidoException _:
                     message = ex.Message;
                     status = 400;
                     break;
@@ -46,10 +47,12 @@ namespace Escola.API.Config
                     message = ex.Message;
                     status = 404;
                     break;
+                 
             }
 
             context.Response.StatusCode = status;
             await context.Response.WriteAsync(message);
+
         }
     }
 }

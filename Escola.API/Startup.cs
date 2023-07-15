@@ -37,6 +37,7 @@ namespace Escola.API
             //Services
             services.AddScoped<IAlunoService,AlunoService>();
             services.AddScoped<IBoletimService,BoletimService>();
+            services.AddScoped<IAutenticacaoServices, AutenticacaoServices>();
 
             //Repositorios
             services.AddDbContext<EscolaDbContexto>();
