@@ -23,7 +23,7 @@ namespace Escola.API.Services
         public string Autenticar(LoginDTO login)
         {
             //Service de usuario obtem usuario pelo login.Usuario 
-            var usuario = new Usuario() { Nome = "Vitor", Senha = "ss" };
+            var usuario = new Usuario() { Nome = "Vitor", Senha = "pmWkWSBCL51Bfkhn79xPuKBKHz//H6B+mY6G9/eieuM=" };
             //criptografar a senha (usando o utils)
 
             if (usuario != null) {

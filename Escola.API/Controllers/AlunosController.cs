@@ -2,6 +2,7 @@
 using Escola.API.Exceptions;
 using Escola.API.Interfaces.Services;
 using Escola.API.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -25,6 +26,7 @@ namespace Escola.API.Controllers
         }
 
         [HttpPost]
+        [Authorize]
         public IActionResult Post([FromBody] AlunoDTO alunoDTO)
         {
             var aluno = new Aluno(alunoDTO);
@@ -35,6 +37,7 @@ namespace Escola.API.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         public ActionResult<AlunoDTO> Get()
         {
 
@@ -46,6 +49,7 @@ namespace Escola.API.Controllers
 
 
         [HttpGet]
+        [Authorize]
         [Route("{id}")]
         public IActionResult GetComId([FromRoute] int id)
         {
@@ -61,6 +65,7 @@ namespace Escola.API.Controllers
 
 
         [HttpPut]
+        [Authorize]
         [Route("{id}")]
         public IActionResult AtualizaAluno([FromBody] AlunoDTO alunoDTO, [FromRoute] int id)
         {
@@ -81,6 +86,7 @@ namespace Escola.API.Controllers
         }
 
         [HttpDelete]
+        [Authorize]
         [Route("{id}")]
         public IActionResult Delete(int id)
         {

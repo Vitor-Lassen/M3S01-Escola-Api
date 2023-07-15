@@ -3,6 +3,7 @@ using Escola.API.Exceptions;
 using Escola.API.Interfaces.Services;
 using Escola.API.Model;
 using Escola.API.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Linq;
@@ -22,6 +23,7 @@ namespace Escola.API.Controllers
         }
 
         [HttpPost("/alunos/{idAluno}/boletins")]
+        [Authorize]
         public ActionResult Post(BoletimDTO boletim, int idAluno)
         {
 
@@ -37,6 +39,7 @@ namespace Escola.API.Controllers
         }
 
         [HttpPut("/alunos/{idAluno}/boletins/{id}")]
+        [Authorize]
         public ActionResult Put(BoletimDTO boletim, int idAluno, int id)
         {
 
@@ -51,6 +54,7 @@ namespace Escola.API.Controllers
 
 
         [HttpGet("/alunos/{idAluno}/boletins")]
+        [Authorize]
         public ActionResult GetPorAluno(int idAluno)
         {
 
@@ -61,6 +65,7 @@ namespace Escola.API.Controllers
         }
 
         [HttpGet("/alunos/{idAluno}/boletins/{id}")]
+        [Authorize]
         public ActionResult GetPorIdValidaAluno(int idAluno, int id)
         {
 
@@ -74,6 +79,7 @@ namespace Escola.API.Controllers
         }
 
         [HttpGet("{id}")]
+        [Authorize]
         public ActionResult GetPorId(int id)
         {
 
@@ -85,6 +91,7 @@ namespace Escola.API.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize]
         public ActionResult Delete(int id)
         {
 

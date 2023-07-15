@@ -1,5 +1,6 @@
 ﻿using Escola.API.DTO;
 using Escola.API.Interfaces.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Runtime.CompilerServices;
@@ -13,9 +14,10 @@ namespace Escola.API.Controllers
         private readonly IAutenticacaoServices _autenticacaoServices;
         public AutenticacaoController(IAutenticacaoServices autenticacaoServices)
         {
-             _autenticacaoServices =   autenticacaoServices;
+            _autenticacaoServices = autenticacaoServices;
         }
         [HttpPost("/login")]
+        [AllowAnonymous]
         public ActionResult Logar(LoginDTO loginDTO)
         {
             return Ok(new { token = _autenticacaoServices.Autenticar(loginDTO)});
