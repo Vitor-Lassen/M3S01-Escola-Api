@@ -20,6 +20,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.AspNetCore.Mvc.Formatters;
 
 namespace Escola.API
 {
@@ -35,6 +36,14 @@ namespace Escola.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc(config =>
+            {
+                config.ReturnHttpNotAcceptable = true;
+                config.OutputFormatters.Add(new XmlDataContractSerializerOutputFormatter());
+                config.InputFormatters.Add(new XmlDataContractSerializerInputFormatter(config));
+            });
+
+
             services.AddControllers();
 
             //Services
