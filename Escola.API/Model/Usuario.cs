@@ -7,5 +7,6 @@ namespace Escola.API.Model
     {
         public string Nome { get; set; }
         public string Senha { get; set; }
+        public string TipoAcesso { get; set; }
     }
 }

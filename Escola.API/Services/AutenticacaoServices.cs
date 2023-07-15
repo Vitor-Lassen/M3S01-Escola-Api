@@ -49,7 +49,7 @@ namespace Escola.API.Services
                   {
                       new Claim(ClaimTypes.Name, usuario.Nome),
                       new Claim("Nome", usuario.Nome),
-                      new Claim(ClaimTypes.Role, ""),
+                      new Claim(ClaimTypes.Role, usuario.TipoAcesso),
                   }),
                 Expires = DateTime.UtcNow.AddHours(4),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
