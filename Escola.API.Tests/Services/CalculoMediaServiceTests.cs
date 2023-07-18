@@ -63,13 +63,13 @@ namespace Escola.API.Tests.Services
         {
             var ex = Assert.Throws<ArgumentOutOfRangeException>(() =>
             {
-                var resultado = _calculoMediaServices.CalcularMedia(2, 15);
+                var resultado = _calculoMediaServices.CalcularMedia(2, -5);
 
             });
             
-            Assert.AreEqual("A nota 15 deve ser maior ou igual a zero", ex.ParamName);
+            Assert.AreEqual("A nota -5 deve ser maior ou igual a zero", ex.ParamName);
+            Assert.IsTrue("A nota -5 deve ser maior ou igual a zero" == ex.ParamName);
             Assert.IsTrue(ex.Message.Contains("deve ser maior ou igual a zero"));
-           
 
 
         }
