@@ -19,23 +19,37 @@ namespace Escola.API.Tests.Services
         [Test]
         public void CalcularMedia_3NumerosPositivos_RetornoMediValida()
         {
+            //ARRANGE
+            var expectedResult = 5;
+
+            //ACT
             var resultado = _calculoMediaServices.CalcularMedia(3, 5, 7);
 
-            Assert.AreEqual(5, resultado);
+            //ASSERT
+            Assert.AreEqual(expectedResult, resultado);
         }
         [Test]
         public void CalcularMedia_2NumerosPositivos_RetornoMediValida()
         {
-            var resultado = _calculoMediaServices.CalcularMedia(2,8);
+            //ARRANGE
+            var expectedResult = 5;
 
-            Assert.AreEqual(5, resultado);
+            //ACT
+            var resultado = _calculoMediaServices.CalcularMedia(2,8);
+            //ASSERT
+            Assert.AreEqual(expectedResult, resultado);
         }
         [Test]
         public void CalcularMedia_4NumerosPositivos_RetornoMediValida()
         {
+            //ARRANGE
+            var expectedResult = 3.5;
+
+            //ACT
             var resultado = _calculoMediaServices.CalcularMedia(2, 8,2,2);
 
-            Assert.AreEqual(3.5, resultado);
+            //ASSERT
+            Assert.AreEqual(expectedResult, resultado);
 
         }
 
@@ -43,7 +57,11 @@ namespace Escola.API.Tests.Services
         [Test]
         public void CalcularMedia_1NumeroValidoE1Invalido_RetornoErro()
         {
+            //ARRANGE
+            var expectedMessage = "A nota 15 deve ser maior ou igual a zero";
+            var expectedPartialMessage = "deve ser maior ou igual a zero";
 
+            //ACT
             try
             {
                 var resultado = _calculoMediaServices.CalcularMedia(2, 15);
@@ -52,8 +70,8 @@ namespace Escola.API.Tests.Services
             catch (ArgumentOutOfRangeException ex)
             {
                 //Assert.IsTrue(ex is ArgumentOutOfRangeException);
-                Assert.AreEqual("A nota 15 deve ser maior ou igual a zero", ex.ParamName);
-                Assert.IsTrue(ex.Message.Contains("deve ser maior ou igual a zero"));
+                Assert.AreEqual(expectedMessage, ex.ParamName);
+                Assert.IsTrue(ex.Message.Contains(expectedPartialMessage));
             }
 
         }
@@ -61,15 +79,21 @@ namespace Escola.API.Tests.Services
         [Test]
         public void CalcularMedia_1NumeroValidoE1Invalido_RetornoErroRecomendado()
         {
+            //ARRANGE
+            var expectedMessage = "A nota -5 deve ser maior ou igual a zero";
+            var expectedPartialMessage = "deve ser maior ou igual a zero";
+
+            //ACT
             var ex = Assert.Throws<ArgumentOutOfRangeException>(() =>
             {
                 var resultado = _calculoMediaServices.CalcularMedia(2, -5);
 
             });
+            //ASSERT
             
-            Assert.AreEqual("A nota -5 deve ser maior ou igual a zero", ex.ParamName);
-            Assert.IsTrue("A nota -5 deve ser maior ou igual a zero" == ex.ParamName);
-            Assert.IsTrue(ex.Message.Contains("deve ser maior ou igual a zero"));
+            Assert.AreEqual(expectedMessage, ex.ParamName);
+            Assert.IsTrue(expectedMessage == ex.ParamName);
+            Assert.IsTrue(ex.Message.Contains(expectedPartialMessage));
 
 
         }
