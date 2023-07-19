@@ -1,5 +1,6 @@
 ﻿using System.Security.Cryptography;
 using System;
+using Escola.API.Model;
 
 namespace Escola.API.Utils
 {
@@ -13,6 +14,12 @@ namespace Escola.API.Utils
             var encryptedPassword = _algoritmo.ComputeHash(encodedValue);
             return Convert.ToBase64String(encryptedPassword);
 
+        }
+        public static Usuario CriptografarSenha(Usuario usuario)
+        {
+            usuario.Senha = CriptografarSenha(usuario.Senha);
+            
+            return usuario;
         }
     }
 }
