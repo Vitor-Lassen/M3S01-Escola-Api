@@ -9,12 +9,12 @@ using System.Xml.Serialization;
 
 namespace Escola.API.Tests.Services
 {
-    public  class CalculoMediaServiceTests
+    public class CalculoMediaServiceTests
     {
         private readonly CalculoMediaService _calculoMediaServices;
         public CalculoMediaServiceTests()
         {
-           _calculoMediaServices = new CalculoMediaService();
+            _calculoMediaServices = new CalculoMediaService();
         }
         [Test]
         public void CalcularMedia_3NumerosPositivos_RetornoMediValida()
@@ -29,13 +29,17 @@ namespace Escola.API.Tests.Services
             Assert.AreEqual(expectedResult, resultado);
         }
         [Test]
-        public void CalcularMedia_2NumerosPositivos_RetornoMediValida()
+        [TestCase(4, 4, 4)]
+        [TestCase(5, 6, 4)]
+        [TestCase(5, 2, 8)]
+
+        public void CalcularMedia_2NumerosPositivos_RetornoMediValida(int expectedResult, int nota1, int nota2)
         {
             //ARRANGE
-            var expectedResult = 5;
+           
 
             //ACT
-            var resultado = _calculoMediaServices.CalcularMedia(2,8);
+            var resultado = _calculoMediaServices.CalcularMedia(nota1,nota2);
             //ASSERT
             Assert.AreEqual(expectedResult, resultado);
         }
