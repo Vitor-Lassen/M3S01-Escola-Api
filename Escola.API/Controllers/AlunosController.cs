@@ -29,6 +29,11 @@ namespace Escola.API.Controllers
         [Authorize(Roles ="Professor")]
         public IActionResult Post([FromBody] AlunoDTO alunoDTO)
         {
+            if (!ModelState.IsValid)
+                return BadRequest();
+
+            if (!Utils.CpfValidacao.Validate(  alunoDTO.CPF))
+                return BadRequest();
             var aluno = new Aluno(alunoDTO);
             //Chamada da service
             aluno = _alunoService.Criar(aluno);

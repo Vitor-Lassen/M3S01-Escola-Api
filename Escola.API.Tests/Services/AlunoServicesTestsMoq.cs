@@ -2,7 +2,7 @@
 using Escola.API.Interfaces.Repositories;
 using Escola.API.Model;
 using Escola.API.Services;
-using Escola.API.Tests.Mocks.Reposiories;
+using Escola.API.Tests.Mock.Reposiories;
 using Moq;
 using Newtonsoft.Json;
 using NUnit.Framework;

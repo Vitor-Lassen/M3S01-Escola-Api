@@ -3,7 +3,7 @@ using Escola.API.Model;
 using System;
 using System.Collections.Generic;
 
-namespace Escola.API.Tests.Mocks.Reposiories
+namespace Escola.API.Tests.Mock.Reposiories
 {
     public class AlunoRepositoryMock : IAlunoRepository
     {

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Escola.API.Tests.Mocks.Reposiories
+namespace Escola.API.Tests.Mock.Reposiories
 {
     public class AlunoRepositoryCamilaMock : IAlunoRepository
     {

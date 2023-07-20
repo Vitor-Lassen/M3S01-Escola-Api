@@ -14,6 +14,7 @@ namespace Escola.API.Model
         public string Genero { get; set; }
         public string Telefone { get; set; }
         public string Email { get; set; }
+        public string CPF { get; set; }
         public DateTime DataNascimento { get; set; }
         public virtual List<Boletim> Boletins { get; set; }
         public virtual List<Turma> Turmas { get; set; }
@@ -33,6 +34,7 @@ namespace Escola.API.Model
             Genero = aluno.Genero;
             Telefone = aluno.Telefone;
             Email = aluno.Email;
+            CPF = aluno.CPF;
 
             if (DateTime.TryParse(aluno.DataNascimento, out var datanascimento))
                 DataNascimento = datanascimento;

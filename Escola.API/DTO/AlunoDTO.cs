@@ -1,4 +1,5 @@
 ﻿using Escola.API.Model;
+using Escola.API.Utils.Annotations;
 using System;
 
 namespace Escola.API.DTO
@@ -13,6 +14,8 @@ namespace Escola.API.DTO
         public string Telefone { get; set; }
         public string Email { get; set; }
         public string DataNascimento { get; set; }
+        [CpfValitation(ErrorMessage = "CPF inválido")]
+        public string CPF { get; set; }
 
         public AlunoDTO()
         {
@@ -28,6 +31,7 @@ namespace Escola.API.DTO
             Genero = aluno.Genero;
             Telefone = aluno.Telefone;
             Email = aluno.Email;
+            CPF = aluno.CPF;
             DataNascimento = aluno.DataNascimento.ToString("dd/MM/yy");
         }
     }

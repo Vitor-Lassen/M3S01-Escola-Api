@@ -1,7 +1,7 @@
 ﻿using Escola.API.Exceptions;
 using Escola.API.Model;
 using Escola.API.Services;
-using Escola.API.Tests.Mocks.Reposiories;
+using Escola.API.Tests.Mock.Reposiories;
 using Newtonsoft.Json;
 using NUnit.Framework;
 using System;
