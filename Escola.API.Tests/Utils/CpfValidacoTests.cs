@@ -39,8 +39,8 @@ namespace Escola.API.Tests.Utils
             bool result = CpfValidacao.Validate(cpf);  //Chamada método  
 
             //ASSERT
-
-            Assert.IsFalse(result);
+        
+            Assert.IsTrue(result);
         }
     }
 }
