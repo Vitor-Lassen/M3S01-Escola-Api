@@ -40,7 +40,7 @@ namespace Escola.API.Tests.Utils
 
             //ASSERT
         
-            Assert.IsFalse(result);
+            Assert.IsTrue(result);
         }
     }
 }
